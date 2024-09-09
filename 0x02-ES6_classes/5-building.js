@@ -13,9 +13,6 @@ export default class Building {
   }
 
   set sqft(value) {
-    if (typeof value !== 'string') {
-      throw new TypeError('Name must be a string');
-    }
     this._sqft = value;
   }
 }
