@@ -13,18 +13,24 @@ app.get('/cart/:id(\\d+)', (req, res) => {
   res.send(`Payment methods for cart ${id}`);
 });
 // new endpoint
-app.get('/available_payments', (req, res) => {
-  res.status(200).json({
-    payment_methods: {
-      credit_cards: true,
-      paypal: false,
-    },
-  });
+app.get('/available_payments', (request, response) => {
+  response.set("Content-Type", "application/json");
+  const payMethods = {
+payment_methods: {
+        credit_cards: true,
+        paypal: false
+}
+  }
+  response.send(payMethods);
 });
 
-app.post('/login', (req, res) => {
-  const { userName } = req.body;
-  res.status(200).send(`Welcome ${userName}`);
+app.post('/login', (request, response) => {
+  const userName = request.body.userName;
+  if (userName) {
+response.send(`Welcome ${userName}`);
+  } else {
+response.status(404).send();
+  }
 });
 
 app.listen(PORT, () => {
