@@ -13,7 +13,7 @@ describe('calculateNumber', () => {
   });
 
   describe('type == "SUBTRACT"', () => {
-    it('equal positive numbers', () => {
+    it('equal positive and -ve numbers', () => {
       assert.strictEqual(calculateNumber('SUBTRACT', 2.0, 2.0), 0);
       assert.strictEqual(calculateNumber('SUBTRACT', 2.3, 1.8), 0);
       assert.strictEqual(calculateNumber('SUBTRACT', -2.0, -2.0), 0);
