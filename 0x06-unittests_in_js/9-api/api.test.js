@@ -12,7 +12,7 @@ describe( 'test api', () => {
     });
   });
 
-  it('GET /cart/:id returns correct response for valid :id', (done) => {
+  it('valid :id', (done) => {
     request.get(`${url}/cart/47`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
       expect(body).to.be.equal('Payment methods for cart 47');
@@ -20,9 +20,26 @@ describe( 'test api', () => {
     });
   });
 
-  it('GET /cart/:id returns 404 response for negative number values in :id', (done) => {
+  it('negative number values in :id', (done) => {
     request.get(`${url}/cart/-47`, (_err, res, _body) => {
       expect(res.statusCode).to.be.equal(404);
+      done();
+    });
+  });
+
+  it('valid login', (done) => {
+    request.post(`${url}/login`, {json: {userName: 'Pinkbrook'}}, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(body).to.be.equal('Welcome Pinkbrook');
+      done();
+    });
+  });
+
+  it('payment valid response', (done) => {
+    request.get(`${url}/available_payments`, (_err, res, body) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(JSON.parse(body))
+        .to.be.deep.equal({payment_methods: {credit_cards: true, paypal: false}});
       done();
     });
   });
