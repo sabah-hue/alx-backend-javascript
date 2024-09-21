@@ -42,7 +42,7 @@ describe( 'test api', () => {
     });
   });
 
-  it('POST /login returns valid response', (done) => {
+  it('login returns valid response', (done) => {
     request.post(`${url}/login`, {json: {userName: 'Pinkbrook'}}, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
       expect(body).to.be.equal('Welcome Pinkbrook');
@@ -50,7 +50,7 @@ describe( 'test api', () => {
     });
   });
 
-  it('GET /available_payments returns valid response', (done) => {
+  it('available_payments returns valid response', (done) => {
     request.get(`${url}/available_payments`, (_err, res, body) => {
       expect(res.statusCode).to.be.equal(200);
       expect(JSON.parse(body))
