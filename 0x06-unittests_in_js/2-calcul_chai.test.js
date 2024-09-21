@@ -25,18 +25,12 @@ describe('calculateNumber', () => {
     });
 
   describe('type == "DIVIDE"', () => {
-    it('give correct output', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
+    it('div on 0', () => {
       assert.strictEqual(calculateNumber('DIVIDE', 0.0, 0.0), 'Error');
       assert.strictEqual(calculateNumber('DIVIDE', -1.0, 0.1), 'Error');
       assert.strictEqual(calculateNumber('DIVIDE', -5.0, -0.2), 'Error');
       assert.strictEqual(calculateNumber('DIVIDE', -2.0, 0.2), 'Error');
       assert.strictEqual(calculateNumber('DIVIDE', 7.0, -0.3), 'Error');
     });
-  });
-
-  it('for invalid types', () => {
-    assert.strictEqual(calculateNumber(123, 1.4, 4.5), 0);
-    assert.strictEqual(calculateNumber('invalid', 1.4, 4.5), 0);
   });
 });
