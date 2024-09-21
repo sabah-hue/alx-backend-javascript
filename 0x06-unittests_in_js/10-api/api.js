@@ -14,18 +14,19 @@ app.get('/cart/:id(\\d+)', (req, res) => {
 });
 // new endpoint
 app.get('/available_payments', (req, res) => {
-  res.json({ payment_methods: { credit_cards: true, paypal: false } });
+  res.status(200).json({
+    payment_methods: {
+      credit_cards: true,
+      paypal: false,
+    },
+  });
 });
-// login
+
 app.post('/login', (req, res) => {
-  let userName = '';
-
-  if (req.body) {
-    userName = req.body.userName;
-  }
-
-  res.send(`Welcome ${userName}`);
+  const { userName } = req.body;
+  res.status(200).send(`Welcome ${userName}`);
 });
+
 app.listen(PORT, () => {
   console.log(`API available on localhost port ${PORT}`);
 });
