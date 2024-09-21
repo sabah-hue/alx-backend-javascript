@@ -18,13 +18,13 @@ app.get('/available_payments', (req, res) => {
 });
 // login
 app.post('/login', (req, res) => {
-  let username = '';
+  let userName = '';
 
   if (req.body) {
-    username = req.body.userName;
+    userName = req.body.userName;
   }
 
-  res.send(`Welcome ${username}`);
+  res.send(`Welcome ${userName}`);
 });
 app.listen(PORT, () => {
   console.log(`API available on localhost port ${PORT}`);
