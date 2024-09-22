@@ -6,6 +6,7 @@ const VALID_MAJORS = ['CS', 'SWE'];
 class StudentsController {
   static getAllStudents(request, response) {
     const dataPath = process.argv.length > 2 ? process.argv[2] : '';
+    const studentGroups = {};
 
     readDatabase(dataPath)
       .then((studentGroups) => {
